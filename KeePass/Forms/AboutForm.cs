@@ -89,8 +89,7 @@ namespace KeePass.Forms
 			m_lvComponents.Items.Add(lvi);
 
 			lvi = new ListViewItem(KPRes.XslStylesheetsKdbx);
-			string strPath = WinUtil.GetExecutable();
-			strPath = UrlUtil.GetFileDirectory(strPath, true, false);
+			string strPath = AppDefs.DebianDataDir;
 			strPath += AppDefs.XslFilesDir;
 			strPath = UrlUtil.EnsureTerminatingSeparator(strPath, false);
 			bool bInstalled = File.Exists(strPath + AppDefs.XslFileHtmlLite);

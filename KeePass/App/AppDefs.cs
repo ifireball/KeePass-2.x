@@ -36,6 +36,8 @@ namespace KeePass.App
 		public static readonly Color ColorControlDisabled = SystemColors.Control;
 		public static readonly Color ColorEditError = Color.FromArgb(255, 192, 192);
 
+                public const string DebianDataDir = "/usr/share/keepass/";
+
 		public const string XslFilesDir = "XSL";
 		public const string XslFileHtmlLite = "KDBX_DetailsLite.xsl";
 		public const string XslFileHtmlFull = "KDBX_DetailsFull.xsl";
