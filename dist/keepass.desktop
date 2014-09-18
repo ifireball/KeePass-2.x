@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=KeePass
+GenericName=Password manager
+Exec=keepass %u
+Icon=keepass
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=Utility;
+MimeType=application/x-keepass2;
