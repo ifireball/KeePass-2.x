@@ -58,7 +58,7 @@ namespace KeePass.App
 			{
 				if(m_strLocalHelpFile == null) return false;
 
-				try { return File.Exists(m_strLocalHelpFile); }
+				try { return Directory.Exists(@"/usr/share/doc/keepass/Chm/help/"); }
 				catch(Exception) { }
 				return false;
 			}
@@ -115,13 +115,12 @@ namespace KeePass.App
 		{
 			Debug.Assert(m_strLocalHelpFile != null);
 
-			// Unblock CHM file for proper display of help contents
-			WinUtil.RemoveZoneIdentifier(m_strLocalHelpFile);
-
-			string strCmd = "\"ms-its:" + m_strLocalHelpFile;
+			string strCmd = @"/usr/share/doc/keepass/Chm/help/";
 
 			if(strTopic != null)
-				strCmd += @"::/help/" + strTopic + ".html";
+				strCmd += strTopic + ".html";
+			else
+				strCmd += @"../index.html";
 
 			if(strSection != null)
 			{
@@ -129,12 +128,10 @@ namespace KeePass.App
 				strCmd += @"#" + strSection;
 			}
 
-			strCmd += "\"";
-
-			try { Process.Start(WinUtil.LocateSystemApp("hh.exe"), strCmd); }
+			try { Process.Start("x-www-browser", strCmd); }
 			catch(Exception exStart)
 			{
-				MessageService.ShowWarning(@"hh.exe " + strCmd, exStart);
+				MessageService.ShowWarning(@"x-www-browser " + strCmd, exStart);
 			}
 		}
 
